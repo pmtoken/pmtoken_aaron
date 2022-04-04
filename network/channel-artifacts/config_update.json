@@ -5,7 +5,7 @@
 		"groups": {
 			"Application": {
 				"groups": {
-					"Org3MSP": {
+					"Org2MSP": {
 						"groups": {},
 						"mod_policy": "",
 						"policies": {
@@ -55,7 +55,7 @@
 		"groups": {
 			"Application": {
 				"groups": {
-					"Org3MSP": {
+					"Org2MSP": {
 						"groups": {},
 						"mod_policy": "Admins",
 						"policies": {
@@ -86,8 +86,8 @@
 								"value": {
 									"anchor_peers": [
 										{
-											"host": "peer0.org3.example.com",
-											"port": 11051
+											"host": "peer0.org2.example.com",
+											"port": 9051
 										}
 									]
 								},

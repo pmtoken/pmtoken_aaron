@@ -48,7 +48,7 @@ async function main() {
         // Evaluate the specified transaction.
         const result = await contract.evaluateTransaction(
             "readRating",
-            "abc@gmail.com"
+            "go41@gmail.com"
         );
         console.log(
             `Transaction has been evaluated, result is: ${result.toString()}`

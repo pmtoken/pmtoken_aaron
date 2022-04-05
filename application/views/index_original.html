@@ -1,5 +1,4 @@
 <head>
-    <title>로그인</title>
     <!-- Bootstrap include -->
     <link
         rel="stylesheet"
@@ -18,201 +17,82 @@
     <!-- slim/jquery, 3.1.0 윗 버전에서 ajax가 작동하지 않는 오류 확인 -->
     <!-- Bootstrap의 CDN을 copy&paste 하되 Line 8의 버전만 3.1.0으로 수정하세요 -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-
-<!--
-<style>
-    body {
-        background-image:url('/image/logo_bg.png');
-        background-color:white;
-
-    }
-
-</style>
--->
-
 </head>
 
 <body>
     <div class="container">
-        <!--<i
+        <i
             class="fas fa-id-card-alt"
             style="font-size: 150px; color: gainsboro"
-        ></i>-->
-        <h1 color="red">PMTOKEN<br/> (달려라 패브릭팀) </h1>
-        
+        ></i>
+        <h1>TEAMATE<br />프로토타입</h1>
         <hr />
-
         <div class="row justify-content-md-center">
             <div class="col-lg">
                 <div id="new-alert"></div>
-                <b>신규 회원 가입하기</b>
-                <br>
-                사용자아이디
-                <br>
+                <h3>새 메이트를 추가합니다</h3>
                 <input
                     type="text"
-                    id="new-userid"
-                    name="userid"
-                    placeholder="사용자아이디 입력"
+                    id="new-email"
+                    name="email"
+                    placeholder="새로 추가할 메이트의 email을 입력하세요"
                 />
-                <br>    
-                사용자이름
-                <br>
-                <input
-                    type="text"
-                    id="new-username"
-                    name="username"
-                    placeholder="사용자이름 입력"
-                />
-                <br>
-                사용자패스워드
-                <br>
-                <input
-                    type="text"
-                    id="new-password"
-                    name="password"
-                    placeholder="사용자패스워드 입력"
-                />
-                <br>
-                <button class="btn btn-primary" id="btn-newuser">사용자등록</button>
+                <br />
+                <button class="btn btn-primary" id="new-btn">추가하기</button>
             </div>
         </div>
-
-<!--
-        <div class="row justify-content-md-center">
-            <div class="col-lg">
-                <div id="new-alert"></div>
-                <b>신규 회원 가입하기</b>
-                <table border = "1" align=center>
-                    <tr>
-                        <td>사용자아이디</td>
-                        <td><input
-                            type="text"
-                            id="new-userid"
-                            name="userid"
-                            placeholder="사용자아이디 입력"
-                        /></td>
-                    </tr>
-                    <tr>
-                        <td>사용자이름</td>
-                        <td><input
-                            type="text"
-                            id="new-username"
-                            name="username"
-                            placeholder="사용자이름 입력"
-                        /> </td>
-                    </tr>
-                    <tr>
-                        <td>사용자패스워드</td>
-                        <td><input
-                            type="text"
-                            id="new-password"
-                            name="password"
-                            placeholder="사용자패스워드 입력"
-                        /> </td>
-                    </tr>
-
-                </table>
-
--->
-
-
-<!--
-                <h3>아이디</h3>
-                <input
-                    type="text"
-                    id="userID"
-                    name="userID"
-                    placeholder="아이디 입력"
-                />
-                <h3>패스워드</h3>
-                <input
-                    type="text"
-                    id="password"
-                    name="password"
-                    placeholder="패스워드 입력"
-                />                
-                <br />
--->
-
-<!--
-    <div class="container">
-            <i
-                class="fas fa-id-card-alt"
-                style="font-size: 150px; color: gainsboro"
-            ></i>
-
-
 
         <div class="row justify-content-md-center">
             <div class="col-lg">
                 <div id="add-alert"></div>
-                <h3>● 과제 평가 입력 </h3>
+                <h3>메이트에 새 프로젝트 점수를 추가합니다</h3>
                 <input
                     type="text"
                     id="add-email"
                     name="email"
-                    placeholder="평가결과를 입력하세요"
+                    placeholder="프로젝트점수를 추가할 메이트의 email을 입력하세요"
                 />
                 <br />
-                <button class="btn btn-primary" id="add-btn">평가입력</button>
+                <input
+                    type="text"
+                    id="add-project"
+                    name="project"
+                    placeholder="프로젝트점수를 추가할 메이트의 프로젝트이름을 입력하세요"
+                />
+                <br />
+                <input
+                    type="text"
+                    id="add-score"
+                    name="score"
+                    placeholder="프로젝트점수를 추가할 메이트의 점수를 입력하세요"
+                />
+                <br />
+                <button class="btn btn-primary" id="add-btn">추가하기</button>
             </div>
         </div>
         <div class="row justify-content-md-center">
             <div class="col-lg">
                 <div id="find-alert"></div>
-                <h3>● 평가 결과 조회</h3>
+                <h3>이메일로 메이트를 조회합니다</h3>
                 <input
                     type="text"
                     id="find-email"
                     name="email"
-                    placeholder="과제명을 입력하세요"
+                    placeholder="조회할 mate의 email을 입력하세요"
                 />
                 <br />
                 <button class="btn btn-warning" id="find-btn">조회하기</button>
 
-
-                // 테이블 안에 row를 하나씩 붙이는 곳 
+                <!-- 테이블 안에 row를 하나씩 붙이는 곳 -->
                 <table class="table">
                     <tbody id="table"></tbody>
                 </table>
             </div>
         </div>
     </div>
--->
-
-
 </body>
 
 <script>
-
-
-    //사용자 등록
-    $("#btn-newuser").click(() => {
-        // new-userid, new-username, new-password라는 id값을 가지고 있는 input의 value를 가지고 옴
-        const e = $("#new-userid").val();
-        const p = $("#new-username").val();
-        const s = $("#new-password").val();
-
-        const url = "/adduser";
-
-        // email이라는 파라메터에 위의 value를 넣음
-        $.post(url, { userid: e, username: p, password: s }, (data, status) => {
-            // http 상태 코드가 200(success)이라면
-            if (status == "success") {
-                // 성공했다는 alert창을 띄움
-                $("#new-alert").append(
-                    "<div id='success' class='alert alert-success'>사용자가 추가되었습니다!</div>"
-                );
-                $("#new-alert").fadeOut(4000);
-            }
-        });
-    });
-
-
-
-
-    // 이메일 등록
     $("#new-btn").click(() => {
         // new-email이라는 id값을 가지고 있는 input의 value를 가지고 옴
         const value = $("#new-email").val();
@@ -230,8 +110,6 @@
             }
         });
     });
-
-
     $("#add-btn").click(() => {
         // new-email이라는 id값을 가지고 있는 input의 value를 가지고 옴
         const e = $("#add-email").val();

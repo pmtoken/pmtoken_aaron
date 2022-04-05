@@ -55,12 +55,15 @@ async function cc_call(fn_name, args) {
     var result;
 
     if (fn_name == "addUser") {
-        result = await contract.submitTransaction("addUser", args);
+        e1 = args[0];
+        p1 = args[1];
+        s1 = args[2];
+        result = await contract.submitTransaction("addUser", e1, p1, s1);
     } else if (fn_name == "addRating") {
-        e = args[0];
-        p = args[1];
-        s = args[2];
-        result = await contract.submitTransaction("addRating", e, p, s);
+        e2 = args[0];
+        p2 = args[1];
+        s2 = args[2];
+        result = await contract.submitTransaction("addRating", e2, p2, s2);
     } else if (fn_name == "readRating")
         result = await contract.evaluateTransaction("readRating", args);
     else result = "not supported function";
@@ -68,12 +71,17 @@ async function cc_call(fn_name, args) {
     return result;
 }
 
-// create mate
-app.post("/mate", async (req, res) => {
-    const email = req.body.email;
-    console.log("add mate email: " + email);
+// 사용자 등록
+app.post("/adduser", async (req, res) => {
+    const uid = req.body.userid;
+    const uname = req.body.username;
+    const pword = req.body.password;
+    console.log("add user id: " + uid);
+    console.log("add user name: " + uname);
+    console.log("add user password: " + pword);
 
-    result = await cc_call("addUser", email);
+    var args = [uid, uname, pword];
+    result = await cc_call("addUser", args);
 
     const myobj = { result: "success" };
     res.status(200).json(myobj);

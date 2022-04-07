@@ -1,5 +1,4 @@
 <head>
-    <title>로그인</title>
     <!-- Bootstrap include -->
     <link
         rel="stylesheet"
@@ -18,241 +17,303 @@
     <!-- slim/jquery, 3.1.0 윗 버전에서 ajax가 작동하지 않는 오류 확인 -->
     <!-- Bootstrap의 CDN을 copy&paste 하되 Line 8의 버전만 3.1.0으로 수정하세요 -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-
-<!--
-<style>
-    body {
-        background-image:url('/image/logo_bg.png');
-        background-color:white;
-
-    }
-
-</style>
--->
-
 </head>
 
 <body>
     <div class="container">
-        <!--<i
+        <i
             class="fas fa-id-card-alt"
             style="font-size: 150px; color: gainsboro"
-        ></i>-->
-        <h1 color="red">PMTOKEN<br/> (달려라 패브릭팀) </h1>
-        
+        ></i>
+        <h1>PMTOKEN<br />달려라패브릭팀</h1>
         <hr />
+
+        <!-- 로그인 -->
 
         <div class="row justify-content-md-center">
             <div class="col-lg">
+                <div id="login-alert"></div>
+                <br>
+                <h3>0. 로그인</h3>
+                <br>
+                    <table align="center">
+
+                        <!-- 이메일 입력(UserId) -->
+                        <tr>
+                            <td align="right"><h5>이메일(아이디)</td></h5></td>
+                            <td>
+                                <input
+                                type="text"
+                                id="login-email"
+                                name="email"
+                                placeholder="e-mail을 입력하세요"
+                                />
+                            </td>
+                        </tr>
+
+                        <!-- 패스워드 입력(UserPassword)-->
+                        <tr>
+                            <td align="right"><h5>패스워드</td></h5></td>
+                            <td>
+                                <input
+                                type="password"
+                                id="login-password"
+                                name="password"
+                                placeholder="패스워드를 입력하세요"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary" id="login-btn">로그인하기</button>
+
+                <!-- 테이블 안에 row를 하나씩 붙이는 곳 -->
+                <table class="table0">
+                    <tbody id="table0"></tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+
+        <!-- 신규 사용자 등록 -->
+        <div class="row justify-content-md-center">
+            <div class="col-lg">
                 <div id="new-alert"></div>
-                <b>신규 회원 가입하기</b>
                 <br>
-                사용자아이디
+                <h3>1. 신규 사용자 등록</h3>
                 <br>
-                <input
-                    type="text"
-                    id="new-userid"
-                    name="userid"
-                    placeholder="사용자아이디 입력"
-                />
-                <br>    
-                사용자이름
-                <br>
-                <input
-                    type="text"
-                    id="new-username"
-                    name="username"
-                    placeholder="사용자이름 입력"
-                />
-                <br>
-                사용자패스워드
-                <br>
-                <input
-                    type="text"
-                    id="new-password"
-                    name="password"
-                    placeholder="사용자패스워드 입력"
-                />
-                <br>
-                <button class="btn btn-primary" id="btn-newuser">사용자등록</button>
+                    <table align="center">
+
+                        <!-- 이메일 입력(UserId) -->
+                        <tr>
+                            <td align="right"><h5>이메일(아이디)</td></h5></td>
+                            <td>
+                                <input
+                                type="text"
+                                id="new-email"
+                                name="email"
+                                placeholder="e-mail을 입력하세요"
+                                />
+                            </td>
+                        </tr>
+
+                        <!-- 이름 입력(UserName)-->
+                        <tr>
+                            <td align="right"><h5>이름</td></h5></td>
+                            <td>
+                                <input
+                                type="text"
+                                id="new-name"
+                                name="name"
+                                placeholder="이름을 입력하세요"
+                                />
+                            </td>
+                        </tr>
+
+                        <!-- 패스워드 입력(UserPassword)-->
+                        <tr>
+                            <td align="right"><h5>패스워드</td></h5></td>
+                            <td>
+                                <input
+                                type="password"
+                                id="new-password"
+                                name="password"
+                                placeholder="패스워드를 입력하세요"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary" id="new-btn">등록하기</button>
             </div>
         </div>
 
-<!--
-        <div class="row justify-content-md-center">
-            <div class="col-lg">
-                <div id="new-alert"></div>
-                <b>신규 회원 가입하기</b>
-                <table border = "1" align=center>
-                    <tr>
-                        <td>사용자아이디</td>
-                        <td><input
-                            type="text"
-                            id="new-userid"
-                            name="userid"
-                            placeholder="사용자아이디 입력"
-                        /></td>
-                    </tr>
-                    <tr>
-                        <td>사용자이름</td>
-                        <td><input
-                            type="text"
-                            id="new-username"
-                            name="username"
-                            placeholder="사용자이름 입력"
-                        /> </td>
-                    </tr>
-                    <tr>
-                        <td>사용자패스워드</td>
-                        <td><input
-                            type="text"
-                            id="new-password"
-                            name="password"
-                            placeholder="사용자패스워드 입력"
-                        /> </td>
-                    </tr>
+        <hr>
 
-                </table>
-
--->
-
-
-<!--
-                <h3>아이디</h3>
-                <input
-                    type="text"
-                    id="userID"
-                    name="userID"
-                    placeholder="아이디 입력"
-                />
-                <h3>패스워드</h3>
-                <input
-                    type="text"
-                    id="password"
-                    name="password"
-                    placeholder="패스워드 입력"
-                />                
-                <br />
--->
-
-<!--
-    <div class="container">
-            <i
-                class="fas fa-id-card-alt"
-                style="font-size: 150px; color: gainsboro"
-            ></i>
-
-
-
+        <!-- 과제 신규 등록 -->
         <div class="row justify-content-md-center">
             <div class="col-lg">
                 <div id="add-alert"></div>
-                <h3>● 과제 평가 입력 </h3>
-                <input
-                    type="text"
-                    id="add-email"
-                    name="email"
-                    placeholder="평가결과를 입력하세요"
-                />
-                <br />
-                <button class="btn btn-primary" id="add-btn">평가입력</button>
+                <h3>2. 과제 등록 / 점수 입력 </h3>
+                    <br>
+                    <table align="center">
+
+                        <!-- 이메일 입력(UserId) -->    
+                        <tr>
+                            <td align="right"><h5>이메일</h5></td>
+                            <td>    
+                            <input
+                            type="text"
+                            id="add-email"
+                            name="email"
+                            placeholder="과제담당자 이메일을 입력하세요"
+                            />
+                            </td>
+                        </tr>
+                  
+                        <!-- 과제제목 입력(projecttitle) -->    
+                        <tr>
+                            <td align="right"><h5>과제제목</h5></td>
+                            <td>
+                            <input
+                            type="text"
+                            id="add-project"
+                            name="project"
+                            placeholder="과제 제목을 입력하세요"
+                            />
+                            </td>
+                        </tr>
+
+                        <!-- 과제내용 입력 (projectcontent)-->
+                        <tr>
+                            <td align="right"><h5>과제내용</h5></td>
+                            <td>
+                            <textarea
+                            rows = "5"
+                            cols = "40"
+                            id="add-projectc"
+                            name="projectc"
+                            placeholder="과제 내용을 입력하세요"
+                            >
+                            </textarea>
+                            </td>
+                        </tr>
+
+                        <!-- 원본 백업 (과제내용 입력)
+                        <input
+                        type="text"
+                        id="add-projectc"
+                        name="projectc"
+                        placeholder="과제 내용을 입력하세요"
+                        />
+                        -->
+                        
+                        <!-- 과제 점수 입력 (score)-->
+                        <tr>
+                            <td align="right"><h5>과제 점수</h5></td>
+                            <td>
+                            <input
+                            type="text"
+                            id="add-score"
+                            name="score"
+                            placeholder="과제 평가점수를 입력하세요"
+                            />
+                            </td>
+                        </tr>
+                    </table>
+
+                <button class="btn btn-primary" id="add-btn">등록하기</button>
             </div>
         </div>
+
+        <hr>
+
+
+        <!-- 과제 조회 -->
         <div class="row justify-content-md-center">
             <div class="col-lg">
                 <div id="find-alert"></div>
-                <h3>● 평가 결과 조회</h3>
-                <input
-                    type="text"
-                    id="find-email"
-                    name="email"
-                    placeholder="과제명을 입력하세요"
-                />
-                <br />
+                    <h5>3. 과제 조회</h5>
+
+                    <table align="center">
+                        <tr>
+                            <td align="right">이메일(아이디)</td>
+                            <td>
+                            <input
+                            type="text"
+                            id="find-email"
+                            name="email"
+                            placeholder="과제 담당자 이메일(아이디)을 입력하세요"
+                            />
+                            </td>
+                        </tr>
+                    </table>
                 <button class="btn btn-warning" id="find-btn">조회하기</button>
 
-
-                // 테이블 안에 row를 하나씩 붙이는 곳 
+                <!-- 테이블 안에 row를 하나씩 붙이는 곳 -->
                 <table class="table">
                     <tbody id="table"></tbody>
                 </table>
             </div>
         </div>
+
+        <!-- 아이디 조회 -->
+        <div class="row justify-content-md-center">
+            <div class="col-lg">
+                <div id="find-user"></div>
+                    <h5>4. 이메일(아이디) 조회</h5>
+
+                    <table align="center">
+                        <tr>
+                            <td align="right">이메일(아이디)</td>
+                            <td>
+                            <input
+                            type="text"
+                            id="find-userid"
+                            name="userid"
+                            placeholder="과제 담당자 이메일(아이디)을 입력하세요"
+                            />
+                            </td>
+                        </tr>
+                    </table>
+                <button class="btn btn-warning" id="btn-find-userid">조회하기</button>
+
+                <!-- 테이블 안에 row를 하나씩 붙이는 곳 -->
+                <table class="table1">
+                    <tbody id="table1"></tbody>
+                </table>
+            </div>
+        </div>
+
+
     </div>
--->
-
-
 </body>
 
 <script>
 
-
-    //사용자 등록
-    $("#btn-newuser").click(() => {
-        // new-userid, new-username, new-password라는 id값을 가지고 있는 input의 value를 가지고 옴
-        const e = $("#new-userid").val();
-        const p = $("#new-username").val();
-        const s = $("#new-password").val();
-
-        const url = "/adduser";
-
-        // email이라는 파라메터에 위의 value를 넣음
-        $.post(url, { userid: e, username: p, password: s }, (data, status) => {
-            // http 상태 코드가 200(success)이라면
-            if (status == "success") {
-                // 성공했다는 alert창을 띄움
-                $("#new-alert").append(
-                    "<div id='success' class='alert alert-success'>사용자가 추가되었습니다!</div>"
-                );
-                $("#new-alert").fadeOut(4000);
-            }
-        });
-    });
-
-
-
-
-    // 이메일 등록
+    // 신규 사용자 등록
     $("#new-btn").click(() => {
         // new-email이라는 id값을 가지고 있는 input의 value를 가지고 옴
         const value = $("#new-email").val();
+        const newname = $("#new-name").val();
+        const newpassword = $("#new-password").val();
         const url = "/mate";
 
         // email이라는 파라메터에 위의 value를 넣음
-        $.post(url, { email: value }, (data, status) => {
+        $.post(url, { email: value, name: newname, password: newpassword }, (data, status) => {
             // http 상태 코드가 200(success)이라면
             if (status == "success") {
                 // 성공했다는 alert창을 띄움
                 $("#new-alert").append(
-                    "<div id='success' class='alert alert-success'>추가를 성공했습니다!</div>"
+                    "<div id='success' class='alert alert-success'>신규 사용자 등록을 완료했습니다!</div>"
                 );
                 $("#new-alert").fadeOut(4000);
             }
         });
     });
 
-
+    // 과제 등록
     $("#add-btn").click(() => {
         // new-email이라는 id값을 가지고 있는 input의 value를 가지고 옴
         const e = $("#add-email").val();
         const p = $("#add-project").val();
+        const pc = $("#add-projectc").val();
         const s = $("#add-score").val();
 
         const url = "/score";
 
         // email이라는 파라메터에 위의 value를 넣음
-        $.post(url, { email: e, project: p, score: s }, (data, status) => {
+        $.post(url, { email: e, project: p, projectc: pc, score: s }, (data, status) => {
             // http 상태 코드가 200(success)이라면
             if (status == "success") {
                 // 성공했다는 alert창을 띄움
                 $("#add-alert").append(
-                    "<div id='success' class='alert alert-success'>점수추가를 성공했습니다!</div>"
+                    "<div id='success' class='alert alert-success'>과제점수를 등록했습니다!</div>"
                 );
                 $("#add-alert").fadeOut(4000);
             }
         });
     });
 
+    // 과제 조회
     $("#find-btn").click(() => {
         const value = $("#find-email").val();
         const url = "/mate/" + value;
@@ -282,6 +343,11 @@
                             "</td></tr>"
                     );
                     $("#table").append(
+                        "<tr><th scope='row'>project content</th><td>" +
+                            parsedData.rates[i].projectcontent +
+                            "</td></tr>"
+                    );
+                    $("#table").append(
                         "<tr><th scope='row'>score</th><td>" +
                             parsedData.rates[i].score +
                             "</td></tr>"
@@ -290,6 +356,81 @@
             }
         });
     });
+
+    // 이메일(아이디) 조회
+    $("#btn-find-userid").click(() => {
+        const value = $("#find-userid").val();
+        const url = "/mate/" + value;
+        $.post(url, { email: value }, (data) => {
+            // 조회했을 때 값이 null이 아니면 (일치하는 값이 존재한다면)
+            if (status != null) {
+
+                const test = JSON.stringify(data);
+                const parsedData = JSON.parse(test);
+
+                $("#find-user").append(
+                    "<div id='success' class='alert alert-success'>이미 등록된 아이디입니다 - 아이디:" + parsedData.user + "</div>"
+                );
+                $("#find-user").fadeOut(5000);
+            
+                // stringify는 json객체를 string으로, parse는 string을 json객체로 변환 시켜줌
+
+            } else {
+                $("#find-user").append(
+                    "<div id='fail' class='alert alert-fail'>등록되지 않은 아이디입니다.</div>"
+                );
+                $("#find-user").fadeOut(2000);
+            }
+        });
+    });
+
+    // 로그인 체크
+    $("#login-btn").click(() => {
+        const value = $("#login-email").val();
+        const value1 = $("#login-password").val();
+        const url = "/mate/" + value;
+        $.post(url, { email: value }, (data) => {
+
+
+            // 조회했을 때 값이 null이 아니면 (일치하는 값이 존재한다면)
+            if (status != null) {
+
+                const test = JSON.stringify(data);
+                const parsedData = JSON.parse(test);
+
+                const user = parsedData.user;
+                const password = parsedData.password;
+
+                if (value == user && value1 == password){
+                    $("#login-alert").append(
+                        "<div id='success' class='alert alert-success'>이미 등록된 아이디입니다 - 아이디:" + parsedData.user + "입력:" + value + " / 패스워드:" + parsedData.password + "입력:" + value1 + "</div>"
+                    );
+                    $("#login-alert").fadeOut(5000);
+                    gopage();
+                } 
+                               
+                if (value1 != password){
+                    $("#login-alert").append(
+                        "<div id='failed' class='alert alert-failed'>패스워드가 틀립니다. - 아이디:" + parsedData.user + "입력:" + value + " / 패스워드:" + parsedData.password + "입력:" + value1 + "</div>"
+                    );
+                    $("#login-alert").fadeOut(5000);
+                } 
+
+                if (value != user){
+                    $("#login-alert").append(
+                        "<div id='failed' class='alert alert-failed'>미등록 아이디입니다. - 아이디:" + parsedData.user + "입력:" + value + " / 패스워드:" + parsedData.password + "입력:" + value1 + "</div>"
+                    );
+                    $("#login-alert").fadeOut(5000);
+                }
+                
+            } 
+        });
+    });
+
+    function gopage(){
+        location.href = "index1.html";
+    }
+ 
 </script>
 
 <!-- styling -->
@@ -306,7 +447,7 @@
     }
 
     button {
-        margin: 20px 10px;
+        margin: 30px 10px;
     }
 
     input {

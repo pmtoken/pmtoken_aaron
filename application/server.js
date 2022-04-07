@@ -54,16 +54,22 @@ async function cc_call(fn_name, args) {
 
     var result;
 
+    /* 백업
     if (fn_name == "addUser") {
-        e1 = args[0];
-        p1 = args[1];
-        s1 = args[2];
-        result = await contract.submitTransaction("addUser", e1, p1, s1);
+        result = await contract.submitTransaction("addUser", args);
+    */
+
+    if (fn_name == "addUser") {
+        email = args[0];
+        name = args[1];
+        password = args[2];
+        result = await contract.submitTransaction("addUser", email, name, password);
     } else if (fn_name == "addRating") {
-        e2 = args[0];
-        p2 = args[1];
-        s2 = args[2];
-        result = await contract.submitTransaction("addRating", e2, p2, s2);
+        e = args[0];
+        p = args[1];
+        pc = args[2];
+        s = args[3];
+        result = await contract.submitTransaction("addRating", e, p, pc, s);
     } else if (fn_name == "readRating")
         result = await contract.evaluateTransaction("readRating", args);
     else result = "not supported function";
@@ -71,16 +77,17 @@ async function cc_call(fn_name, args) {
     return result;
 }
 
-// 사용자 등록
-app.post("/adduser", async (req, res) => {
-    const uid = req.body.userid;
-    const uname = req.body.username;
-    const pword = req.body.password;
-    console.log("add user id: " + uid);
-    console.log("add user name: " + uname);
-    console.log("add user password: " + pword);
+// 신규 사용자 등록 (arg : 이메일, 이름, 패스워드)
+app.post("/mate", async (req, res) => {
+    const email = req.body.email;
+    const name = req.body.name;
+    const password = req.body.password;
+    console.log("add user email: " + email);
+    console.log("add user name: " + name);
+    console.log("add user password: " + password);
 
-    var args = [uid, uname, pword];
+    var args = [email, name, password];
+    
     result = await cc_call("addUser", args);
 
     const myobj = { result: "success" };
@@ -91,12 +98,14 @@ app.post("/adduser", async (req, res) => {
 app.post("/score", async (req, res) => {
     const email = req.body.email;
     const prj = req.body.project;
+    const prjc = req.body.projectc;  
     const sc = req.body.score;
     console.log("add project email: " + email);
     console.log("add project name: " + prj);
+    console.log("add project content:" + prjc);
     console.log("add project score: " + sc);
 
-    var args = [email, prj, sc];
+    var args = [email, prj, prjc, sc];
     result = await cc_call("addRating", args);
 
     const myobj = { result: "success" };

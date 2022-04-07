@@ -12,98 +12,83 @@ type SmartContract struct {
 	contractapi.Contract
 }
 
+/* 원본 백업
 type UserRating struct {
 	User    string  `json:"user"`
 	Average float64 `json:"average"`
 	Rates   []Rate  `json:"rates"`
 }
+*/
+
+// 사용자 등록 struct
+type UserRating struct {
+	User     string  `json:"user"`     //이메일주소
+	Name     string  `json:"name"`     //이름
+	Password string  `json:"password"` //패스워드
+	Average  float64 `json:"average"`
+	Rates    []Rate  `json:"rates"`
+}
+
 type Rate struct {
-	ProjectTitle string  `json:"projecttitle"`
-	Score        float64 `json:"score"`
+	ProjectTitle   string  `json:"projecttitle"`
+	ProjectContent string  `json:"projectcontent"`
+	Score          float64 `json:"score"`
 }
 
-//TaskInfo (과제 정보) 구조체 정의
-type TaskInfo struct {
-	UserID    string     `json:"userid"`   //UserID
-	UserName  string     `json:"username"` //User이름
-	Password  string     `json:"password"` //User패스워드
-	TaskRates []TaskRate `json:"taskrate"`
+//type Rate struct{
+//	ProjectTitle string  `json:"projecttitle"`
+//	ProjectContent string  `json:"projectcontent"`
+//	Score []Score `json:"score"`
+//}
+
+/* AddUser 원본 백업
+func (s *SmartContract) AddUser(ctx contractapi.TransactionContextInterface, username string) error {
+
+	var user = UserRating{User: username, Average: 0}
+	userAsBytes, _ := json.Marshal(user)
+
+	return ctx.GetStub().PutState(username, userAsBytes)
+}
+*/
+
+// AddUser (이메일, 이름, 패스워드)
+func (s *SmartContract) AddUser(ctx contractapi.TransactionContextInterface, username string, name string, password string) error {
+
+	var user = UserRating{User: username, Name: name, Password: password, Average: 0}
+	userAsBytes, _ := json.Marshal(user)
+
+	return ctx.GetStub().PutState(username, userAsBytes)
 }
 
-//TaskRate (과제 평가) 구조체 정의
-type TaskRate struct {
-	TaskID           float64 `json:"taskid"`           //Task번호 : Number로 자동생성
-	TaskTitle        string  `json:"tasktitle"`        //Task 타이틀
-	TaskContents     string  `json:"taskcontents"`     //Task 내용
-	IssuerID         string  `json:"issuerid"`         //과제 담당자ID
-	EvaluatorID      string  `json:"evaluatorid"`      //평가자 ID
-	EvaluationRecord string  `json:"evaluationrecord"` //평가기록
-}
-
-//사용자 신규 등록
-
-func (s *SmartContract) AddUser(ctx contractapi.TransactionContextInterface, userid string, username string, password string) error {
-
-	// getstate userid
-	userAsBytes, err := ctx.GetStub().GetState(userid)
-
-	fmt.Print(userid, username, password)
-
-	if err != nil {
-		return err
-	}
-
-	if userAsBytes == nil {
-		return fmt.Errorf("%s does not exit", userid)
-	}
-
-	user := TaskInfo{}
-	err = json.Unmarshal(userAsBytes, &user)
-	if err != nil {
-		return fmt.Errorf("json unmarshal error! : %s", err.Error())
-	}
-
-	user.UserName = username
-	user.Password = password
-	// userAsBytes, _ := json.Marshal(user)
-
-	return ctx.GetStub().PutState(userid, userAsBytes)
-}
-
-func (s *SmartContract) AddRating(ctx contractapi.TransactionContextInterface, username string, prjTitle string, prjscore string) error {
+func (s *SmartContract) AddRating(ctx contractapi.TransactionContextInterface, username string, prjTitle string, prjContent string, prjscore string) error {
 
 	// getState User
 	userAsBytes, err := ctx.GetStub().GetState(username)
 
 	if err != nil {
 		return err
-	}
-
-	if userAsBytes == nil {
-		return fmt.Errorf("%s does not exit", username)
+	} else if userAsBytes == nil { // no State! error
+		return fmt.Errorf("\"Error\":\"User does not exist: " + username + "\"")
 	}
 	// state ok
 	user := UserRating{}
 	err = json.Unmarshal(userAsBytes, &user)
 	if err != nil {
-		return fmt.Errorf("json unmarshal error! : %s", err.Error())
+		return err
 	}
-
 	// create rate structure
-	newRate, _ := strconv.ParseFloat(prjscore, 64) // _ 리턴 값이 있지만 안쓰겠다는 의미
-	var Rate = Rate{ProjectTitle: prjTitle, Score: newRate}
+	newRate, _ := strconv.ParseFloat(prjscore, 64)
+	var Rate = Rate{ProjectTitle: prjTitle, ProjectContent: prjContent, Score: newRate}
+
+	rateCount := float64(len(user.Rates))
 
 	user.Rates = append(user.Rates, Rate)
 
-	//3. 수정된 정보를 기반으로 평균 프로젝트 점수 생성
-
-	rateCount := float64(len(user.Rates))
-	user.Average = (user.Average*(rateCount-1) + newRate) / rateCount
-
-	// 4. put (user id, 수정정보) update to User World state
+	user.Average = (rateCount*user.Average + newRate) / (rateCount + 1)
+	// update to User World state
 	userAsBytes, err = json.Marshal(user)
 	if err != nil {
-		return fmt.Errorf("json marshal error!: %s", err.Error())
+		return fmt.Errorf("failed to Marshaling: %v", err)
 	}
 
 	err = ctx.GetStub().PutState(username, userAsBytes)
@@ -128,7 +113,7 @@ func (s *SmartContract) ReadRating(ctx contractapi.TransactionContextInterface, 
 	// user := new(UserRating)
 	// _ = json.Unmarshal(UserAsBytes, &user)
 
-	return string(UserAsBytes[:]), nil // GetState 으로 받아온 값을 string으로 넣어준 것임
+	return string(UserAsBytes[:]), nil
 }
 
 func main() {

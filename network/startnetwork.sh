@@ -47,6 +47,12 @@ cryptogen generate --config=./config/crypto-config-org2.yaml --output="organizat
 res=$?
 { set +x; } 2>/dev/null
 
+subinfoln "Creating Org3 Identities"
+
+set -x
+cryptogen generate --config=./config/crypto-config-org3.yaml --output="organizations"
+res=$?
+{ set +x; } 2>/dev/null
 
 subinfoln "Creating Orderer Org Identities"
 
@@ -58,7 +64,7 @@ res=$?
 # Generate orderer system channel genesis block.
 infoln "------------- Generating Orderer Genesis block"
 set -x
-configtxgen -profile TwoOrgsOrdererGenesis -channelID system-channel -outputBlock ./system-genesis-block/genesis.block
+configtxgen -profile ThreeOrgsOrdererGenesis -channelID system-channel -outputBlock ./system-genesis-block/genesis.block
 { set +x; } 2>/dev/null
 
 # Bring up the peer and orderer nodes using docker compose.

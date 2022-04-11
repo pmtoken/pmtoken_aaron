@@ -4,13 +4,23 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+
 <html>
 	<head>
-		<title>Hyperspace by HTML5 UP</title>
+		<title>PMTOKEN by RUN-FABRIC Team</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- 로그인 세션 저장 -->
+		<script  type="text/javascript">
+			var user_id = "<%=(String)session.getAttribute("user")%>";
+			session.putValue("userid",user_id);
+		
+		</script>
+
 	</head>
 	<body class="is-preload">
 
@@ -21,8 +31,11 @@
 						<ul>
 							<li><a href="#intro">프로젝트 개요</a></li>
 							<li><a href="#one">PMTOKEN 시작하기</a></li>
-							<li><a href="#two">팀소개</a></li>
-							<li><a href="#three">Get in touch</a></li>
+							<li><a href="#two-one">신규 사용자등록</a></li>
+							<li><a href="#two-two">과제 등록</a></li>
+							<li><a href="#two-three">과제 조회</a></li>
+							<li><a href="#three">팀소개</a></li>
+							<li><a href="#four">Get in touch</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -35,8 +48,12 @@
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
 							<h1>PMTOKEN</h1>
-							<p>핵심가치 : Hyperledger Fabric 기반의 투명하고 공정한 과제 실적 관리 </p>
-							<p>비전 : NFT 기능 구현 및 메타버스 환경으로의 확장 ('22.3Q) </p>
+							<P><font color=#ffd400>? 사내 프로젝트 또는 학교 과제에 열심히 참여했지만, 일부 사람만 공로를 인정받은 경험이 있으신가요 ?</font></P>
+							<P><font color=#ffd400>? 프로젝트/과제 진행 과정에서 취득한 지식 및 경험이 자산화되지 못해 아쉬움이 남으셨나요 ?</font></P> 
+							<P><font color=#ffd400>[ PMTOKEN ]</font> 서비스는 Private Blockchain 기반의 투명하고 공정한 프로젝트/과제 실적 관리를 위해 태어났습니다.</P>
+							<BR>
+							<p>● 핵심가치 : 과제 수행 전체 과정을 기록/자산화하고, 과제 수행자에 대한 투명하고 공정한 평가/보상 체계 제공</p>
+							<p>● 향후비전 : NFT 인증 기능 구현 및 메타버스 환경으로의 확장 ('22.3Q) </p>
 							<ul class="actions">
 								<li><a href="#one" class="button scrolly">시작하기</a></li>
 							</ul>
@@ -46,7 +63,9 @@
 				<!-- One -->
 					<section id="one" class="wrapper style2 spotlights">
 						<section>
-							<a href="#" class="image"><img src="images/jake.png" alt="" data-position="center center" /></a>
+							<!-- <a href="#" class="image"><img src="images/jake.png" alt="" data-position="center center" /></a> -->
+							<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+							<lottie-player src="https://assets6.lottiefiles.com/packages/lf20_xyadoh9h.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop  autoplay data-position="top center"></lottie-player>
 							<div class="content">
 								<div class="inner">
 									<h2>사용자 등록</h2>
@@ -54,16 +73,16 @@
 									<P>- <b>[일반사용자]</b> 과제등록/수정 및 타인 과제를 조회할 수 있지만, 평가 권한은 없습니다.</P>
 									<P>- <b>[평가담당자]</b> 모든 과제를 평가할 수 있지만, 직접 과제에 참여하지는 못합니다.</P>
 									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
+										<li><a href="#two-one" class="button">신규 사용자 등록</a></li>
 									</ul>
 								</div>
 							</div>
 						</section>
 						<section>
-							<a href="#" class="image"><img src="images/logo.png" alt="" data-position="top center" /></a>
+							<a href="#" class="image"><img src="images/logo_2.png" alt="" data-position="top center" style="width: 450px; height:450px;" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>PMTOKEN의 주요 기능은 다음과 같습니다.</h2>
+									<h2><font color=#ffd400>PMTOKEN</font>의 주요 기능은 다음과 같습니다.</h2>
 									<p>각 기능 별 세부내용이 궁금하시다면 LEARN MORE를 클릭해 주시기 바랍니다.</p>
 									<p><b>1. 사용자 등록</b></p>
 									<p><b>2. 과제 등록</b></p>
@@ -76,7 +95,7 @@
 							</div>
 						</section>
 						<section>
-							<a href="#" class="image"><img src="images/hyper_aws.png" alt="" data-position="45% 45%" /></a>
+							<a href="#" class="image"><img src="images/hyper_aws_2.png" alt="" data-position="45% 45%" /></a>
 							<div class="content">
 								<div class="inner">
 									<h2>주요 아키텍처</h2>
@@ -91,36 +110,284 @@
 						</section>
 					</section>
 
-				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
+
+				<!-- 체인코드 구현 -->
+				<!-- two-one -->
+				<section id="two-one" class="wrapper style2 fade-up">
+					<!--<div class="row justify-content-md-center">-->
+					<!--	<div class="col-lg"> -->
+					<div class="inner">
+						<div class="split style2">
+							<section>
+							<div id="new-alert"></div>
+							<h3>· 신규 사용자 등록</h3>
+							<br>
+								<table align="center">
+			
+									<!-- 이메일 입력(UserId) -->
+									<tr>
+										<td align="right"><h5>이메일</td></h5></td>
+										<td>
+											<input
+											type="text"
+											id="new-email"
+											name="email"
+											placeholder="e-mail을 입력하세요"
+											/>
+										</td>
+									</tr>
+			
+									<!-- 이름 입력(UserName)-->
+									<tr>
+										<td align="right"><h5>이름</td></h5></td>
+										<td>
+											<input
+											type="text"
+											id="new-name"
+											name="name"
+											placeholder="이름을 입력하세요"
+											/>
+										</td>
+									</tr>
+			
+									<!-- 패스워드 입력(UserPassword)-->
+									<tr>
+										<td align="right"><h5>패스워드</td></h5></td>
+										<td>
+											<input
+											type="password"
+											id="new-password"
+											name="password"
+											placeholder="패스워드를 입력하세요"
+											/>
+										</td>
+									</tr>
+								</table>
+								<button class="btn btn-primary" id="new-btn" align="center">등록하기</button>
+								</section>
+
+								<!-- 이메일 조회 -->
+								<section>
+									<div id="find-user"></div>
+									<h3>· 이메일(아이디) 조회</h3>
+									<br>
+				
+									<table align="center">
+										<tr>
+											<td align="right"><h5>이메일</h5></td>
+											<td>
+											<input
+											type="text"
+											id="find-userid"
+											name="userid"
+											placeholder="조회할 이메일 주소를 입력하세요"
+											/>
+											</td>
+										</tr>
+									</table>
+								<button class="btn btn-warning" id="btn-find-userid">조회하기</button>
+
+								<!-- 테이블 안에 row를 하나씩 붙이는 곳 -->
+								<table class="table1">
+									<tbody id="table1"></tbody>
+								</table>	
+								</section>
+								<br>
+
+								<!-- 로그인 
+								<section>
+									<div id="login-alert"></div>
+									<h3>· 로그인</h3>
+									<br>
+				
+									<tr>
+										<td align="right"><h5>이메일(아이디)</td></h5></td>
+										<td>
+										<form id="idform">
+											<input
+											type="text"
+											id="login-email"
+											name="email"
+											placeholder="e-mail을 입력하세요"
+											/>
+										</form>
+										</td>
+									</tr>
+								-->
+			
+									<!-- 패스워드 입력(UserPassword)
+									<tr>
+										<td align="right"><h5>패스워드</td></h5></td>
+										<td>
+										<form id="passform">
+											<input
+											type="password"
+											id="login-password"
+											name="password"
+											placeholder="패스워드를 입력하세요"
+											/>
+										</form>
+										</td>
+
+
+									</tr>
+								</table>
+								<button class="btn btn-primary" id="login-btn">로그인하기</button>
+								-->
+
+						</div>
+					</div>
+								
+
+
+				<!-- 체인코드 구현 -->
+				<!-- two-two -->
+				<section id="two-two" class="wrapper style1 fade-up">
+					<!--<div class="row justify-content-md-center">-->
+					<!--	<div class="col-lg"> -->
+					<div class="inner">
+						<div class="content">
+							<section>
+							<div id="new-alert"></div>
+							<h3>· 과제 등록</h3>
+							<table align="center">
+
+								<!-- 이메일 입력(UserId) -->    
+								<tr>
+									<td align="right"><h5>이메일</h5></td>
+									<td>    
+									<input
+									type="text"
+									id="add-email"
+									name="email"
+									placeholder="과제담당자 이메일을 입력하세요"
+									/>
+									</td>
+								</tr>
+						  
+								<!-- 과제제목 입력(projecttitle) -->    
+								<tr>
+									<td align="right"><h5>과제제목</h5></td>
+									<td>
+									<input
+									type="text"
+									id="add-project"
+									name="project"
+									placeholder="과제 제목을 입력하세요"
+									/>
+									</td>
+								</tr>
+		
+								<!-- 과제내용 입력 (projectcontent)-->
+								<tr>
+									<td align="right"><h5>과제내용</h5></td>
+									<td>
+									<textarea
+									rows = "5"
+									cols = "40"
+									id="add-projectc"
+									name="projectc"
+									placeholder="과제 내용을 입력하세요"
+									>
+									</textarea>
+									</td>
+								</tr>
+		
+								<!-- 원본 백업 (과제내용 입력)
+								<input
+								type="text"
+								id="add-projectc"
+								name="projectc"
+								placeholder="과제 내용을 입력하세요"
+								/>
+								-->
+								
+								<!-- 과제 점수 입력 (score)-->
+								<tr>
+									<td align="right"><h5>과제 점수</h5></td>
+									<td>
+									<input
+									type="text"
+									id="add-score"
+									name="score"
+									placeholder="과제 평가점수를 입력하세요"
+									/>
+									</td>
+								</tr>
+							</table>
+		
+							<button class="btn btn-primary" id="add-btn">등록하기</button>
+
+						</div>
+					</div>
+
+				<!-- 체인코드 구현 -->
+				<!-- two-three -->
+				<section id="two-three" class="wrapper style2 fade-up">
+					<!--<div class="row justify-content-md-center">-->
+					<!--	<div class="col-lg"> -->
+					<div class="inner">
+						<div class="content">
+							<section>
+							<div id="new-alert"></div>
+							<h3>· 과제 조회</h3>
+							<table align="center">
+								<tr>
+									<td align="right">이메일(아이디)</td>
+									<td>
+									<input
+									type="text"
+									id="find-email"
+									name="email"
+									placeholder="과제 담당자 이메일(아이디)을 입력하세요"
+									/>
+									</td>
+								</tr>
+							</table>
+						<button class="btn btn-warning" id="find-btn">조회하기</button>
+						<hr>
+						<!-- 테이블 안에 row를 하나씩 붙이는 곳 -->
+						<table class="table">
+							<tbody id="table"></tbody>
+						</table>
+
+						</div>
+					</div>
+
+
+
+				<!-- three -->
+					<section id="three" class="wrapper style3 fade-up">
 						<div class="inner">
 							<h2>팀 소개</h2>
 							<p><b>달려라 패브릭팀은 5인의 각 분야별 전문가로 구성되었습니다.</b></p>
 							<div class="features">
 								<section>
-									<span class="icon solid major fa-code"></span>
-									<h3>최영상</h3>
-									<p>자기소개..</p>
+									<!--<span class="icon solid major fa-code"></span>-->
+									<img src="/images/victor_small.png"> <h3> 최영상 </h3>
+									· Old tower and Nameless Wildflowers
 								</section>
 								<section>
-									<span class="icon solid major fa-lock"></span>
-									<h3>정선애</h3>
-									<p>자기소개..</p>
+									<!--<span class="icon solid major fa-lock"></span>-->
+									<img src="/images/sunae_small.png"> <h3> 정선애 </h3>
+									· 문서와 콘텐츠관리 
+									<br>· NFT 설계 프로세스 정책연구
 								</section>
 								<section>
-									<span class="icon solid major fa-cog"></span>
-									<h3>이선교</h3>
-									<p>자기소개..</p>
+									<!--<span class="icon solid major fa-cog"></span>-->
+									<img src="/images/sunkyo_small.png"> <h3> 이선교 </h3>
+									· 웹 디자인
 								</section>
 								<section>
-									<span class="icon solid major fa-desktop"></span>
-									<h3>정승일</h3>
-									<p>자기소개..</p>
+									<!--<span class="icon solid major fa-desktop"></span>-->
+									<img src="/images/seungil_small.png"> <h3> 정승일 </h3>
+									· Artificial Intelligence
 								</section>
 								<section>
 									<!--<span class="icon solid major fa-link"></span>-->
 									<img src="/images/aaron_mini.png"> <h3> 김민수 </h3>
-									자기소개..
+									· 신기술 기반의 사업 기획/제안/이행
+									<br>· Project Manager
 								</section>
 								<section>
 									<span class="icon major fa-gem"></span>
@@ -134,8 +401,13 @@
 						</div>
 					</section>
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
+
+
+
+
+
+				<!-- four -->
+					<section id="four" class="wrapper style1 fade-up">
 						<div class="inner">
 							<h2>Get in touch</h2>
 							<p>Github PMTOKEN Discussion 공간에 방문하셔서 자유롭게 의견을 나누시기 바랍니다.
@@ -143,6 +415,8 @@
 								<li><a href="https://github.com/pmtoken/pmtoken_aaron/discussions/" class="button scrolly">Github 이동하기</a></li>
 							</ul>
 							<div class="split style1">
+
+								<!--
 								<section>
 									<form method="post" action="#">
 										<div class="fields">
@@ -164,6 +438,8 @@
 										</ul>
 									</form>
 								</section>
+								-->
+
 								<section>
 									<ul class="contact">
 										<li>
@@ -178,7 +454,7 @@
 										</li>
 										<li>
 											<h3>Phone</h3>
-											<span>temporarily not provided</span>
+											<span>temporarily unavailable</span>
 										</li>
 										<li>
 											<h3>Social</h3>
@@ -196,13 +472,21 @@
 						</div>
 					</section>
 
-			</div>
+
+
+
+
+						</div>
+					<!--</div>-->
+				</section>
+
+		</div>			
 
 		<!-- Footer -->
 			<footer id="footer" class="wrapper style1-alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; PMTOKEN. All rights reserved.</li><li>Bootstrap Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -215,6 +499,170 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+			$("#new-btn").click(() => {
+				// new-email이라는 id값을 가지고 있는 input의 value를 가지고 옴
+				const value = $("#new-email").val();
+				const newname = $("#new-name").val();
+				const newpassword = $("#new-password").val();
+				const url = "/mate";
+		
+				// email이라는 파라메터에 위의 value를 넣음
+				$.post(url, { email: value, name: newname, password: newpassword }, (data, status) => {
+					// http 상태 코드가 200(success)이라면
+					if (status == "success") {
+						// 성공했다는 alert창을 띄움
+						$("#new-alert").append(
+							"<div id='success' class='alert alert-success'>신규 사용자 등록을 완료했습니다!</div>"
+						);
+						$("#new-alert").fadeOut(4000);
+					}
+				});
+			});
+			</script>
+
+
+			<!-- 이메일 조회 -->
+			<script>
+				    $("#btn-find-userid").click(() => {
+        			const value = $("#find-userid").val();
+        			const url = "/mate/" + value;
+        			$.post(url, { email: value }, (data) => {
+
+            		// 조회했을 때 값이 null이 아니면 (일치하는 값이 존재한다면)
+            		if (status != null) {
+
+                	const test = JSON.stringify(data);
+                	const parsedData = JSON.parse(test);
+
+                	$("#find-user").append(
+                	    "<div id='success' class='alert alert-success'>이미 등록된 아이디입니다 - 아이디:" + parsedData.user + "</div>"
+                	);
+                	$("#find-user").fadeOut(5000);
+            
+            		// stringify는 json객체를 string으로, parse는 string을 json객체로 변환 시켜줌
+
+            		} else {
+                	$("#find-user").append(
+                    	"<div id='fail' class='alert alert-fail'>등록되지 않은 아이디입니다.</div>"
+                	);
+                	$("#find-user").fadeOut(2000);
+            		}
+        		});
+    		});
+			</script>
+
+
+			<!-- 로그인 체크 -->
+			<script>
+				    $("#login-btn").click(() => {
+	       			const value = $("#login-email").val();
+    		    	const value1 = $("#login-password").val();
+        			const url = "/mate/" + value;
+        			$.post(url, { email: value }, (data) => {
+
+
+					if (status != null) {
+
+        	        	const test = JSON.stringify(data);
+            	    	const parsedData = JSON.parse(test);
+
+                		const user = parsedData.user;
+                		const password = parsedData.password;
+
+                		if (value == user && value1 == password){
+                    	$("#login-alert").append(
+                        "<div id='success' class='alert alert-success'>로그인 성공 - 저장된 아이디:" + user + "입력:" + value + " / 저장된 패스워드:" + password + "입력:" + value1 + "</div>"
+                    	);
+                    	$("#login-alert").fadeOut(5000);
+						alert( 'login success' + user );
+						document.location.href="./login.html";
+                		} 
+                               
+                		if (value1 != password){
+                    	$("#login-alert").append(
+                        "<div id='failed' class='alert alert-failed'>패스워드 오류 - 저장된 아이디:" + user + "입력:" + value + " / 저장된 패스워드:" + password + "입력:" + value1 + "</div>"
+                    	);
+                    	$("#login-alert").fadeOut(5000);
+                		} 
+                
+            		} 
+        		});
+    		});
+			</script>
+
+			<!-- 과제 등록 -->
+
+			<script>
+			    $("#add-btn").click(() => {
+        		// new-email이라는 id값을 가지고 있는 input의 value를 가지고 옴
+        		const e = $("#add-email").val();
+        		const p = $("#add-project").val();
+        		const pc = $("#add-projectc").val();
+        		const s = $("#add-score").val();
+
+        		const url = "/score";
+
+        		// email이라는 파라메터에 위의 value를 넣음
+        		$.post(url, { email: e, project: p, projectc: pc, score: s }, (data, status) => {
+            	// http 상태 코드가 200(success)이라면
+            		if (status == "success") {
+                // 성공했다는 alert창을 띄움
+                	$("#add-alert").append(
+                    	"<div id='success' class='alert alert-success'>과제점수를 등록했습니다!</div>"
+                	);
+                	$("#add-alert").fadeOut(4000);
+            		}
+        		});
+    		});
+			</script>
+
+			<!-- 과제 조회 -->
+			<script>
+			$("#find-btn").click(() => {
+				const value = $("#find-email").val();
+				const url = "/mate/" + value;
+				$.post(url, { email: value }, (data) => {
+					// 조회했을 때 값이 null이 아니면 (일치하는 값이 존재한다면)
+					if (status != null) {
+						$("#find-alert").append(
+							"<div id='success' class='alert alert-success'>조회를 성공했습니다!</div>"
+						);
+						$("#find-alert").fadeOut(2000);
+		
+						// stringify는 json객체를 string으로, parse는 string을 json객체로 변환 시켜줌
+						const test = JSON.stringify(data);
+						const parsedData = JSON.parse(test);
+						$("#table").empty();
+		
+						$("#table").append(
+							"<tr><th scope='row'>average</th><td>" +
+								parsedData.average +
+								"</td></tr>"
+						);
+						// rates라는 key의 value로 Json array가 있으므로 반복문을 통해 한 줄씩 테이블에 넣어줌
+						for (var i = 0; i < parsedData.rates.length; i++) {
+							$("#table").append(
+								"<tr><th scope='row'>project title</th><td>" +
+									parsedData.rates[i].projecttitle +
+									"</td></tr>"
+							);
+							$("#table").append(
+								"<tr><th scope='row'>project content</th><td>" +
+									parsedData.rates[i].projectcontent +
+									"</td></tr>"
+							);
+							$("#table").append(
+								"<tr><th scope='row'>score</th><td>" +
+									parsedData.rates[i].score +
+									"</td></tr>"
+							);
+						}
+					}
+				});
+			});
+			</script>
 
 	</body>
 </html>

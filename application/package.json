@@ -15,9 +15,11 @@
     "author": "Hyperledger",
     "license": "Apache-2.0",
     "dependencies": {
+        "cookie-parser": "^1.4.6",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
         "fabric-ca-client": "^2.2.4",
         "fabric-network": "^2.2.4",
-        "express": "^4.17.1",
         "jquery": "^3.4.1"
     },
     "devDependencies": {

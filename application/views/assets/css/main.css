@@ -3009,7 +3009,7 @@ input, select, textarea {
 			border-radius: 0;
 			display: block;
 			position: relative;
-			width: 25em;
+			width: 400px;
 		}
 
 			.spotlights > section > .image img {
@@ -3261,6 +3261,14 @@ input, select, textarea {
 
 		.wrapper.style3-alt {
 			background-color: #953d75;
+		}
+
+		.wrapper.style4 {
+			background-color: #1e793c;
+		}
+
+		.wrapper.style4-alt {
+			background-color: #54d1b6;
 		}
 
 		.wrapper.fullscreen {
